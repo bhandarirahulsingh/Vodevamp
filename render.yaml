@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: codevamp-api
+    runtime: node
+    buildCommand: npm ci && npm run build:api
+    startCommand: npm run start:api
+    healthCheckPath: /
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGODB_URI
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: EXECUTOR_PROVIDER
+        value: judge0
+      - key: JUDGE0_URL
+        value: https://judge0-ce.p.rapidapi.com
+      - key: JUDGE0_API_KEY
+        sync: false
+      - key: JUDGE0_API_HOST
+        value: judge0-ce.p.rapidapi.com
